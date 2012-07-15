@@ -22,7 +22,7 @@ class ModWatch
     watched = []
 
     # script wrapper for change
-    changeHanlder = () ->
+    changeHandler = () ->
       console.log "delta-watch: found change"
       if typeof handler is "function" then handler() else exec handler, handleError
 
@@ -63,7 +63,7 @@ class ModWatch
           # and finally watch the file/folder
           watcher folder, { persistent: true }, (curr, prev) ->
             # invoke handler
-            changeHanlder()
+            changeHandler()
             # reprime watching to take into account newly added files
             _watch()
     
