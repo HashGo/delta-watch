@@ -27,7 +27,7 @@ class ModWatch
       if typeof handler is "function" then handler() else exec handler, handleError
 
     # helper recurisively collect files and dirs in a dir
-    traverseFileSystem = (files, currentPath, recursive) ->
+    traverseFileSystem = (files, currentPath) ->
       current = fs.realpathSync currentPath
       stats = fs.statSync(current)
       # cache
@@ -39,14 +39,14 @@ class ModWatch
         for file in currFiles
           do (file) ->
             currentFile = currentPath + '/' + file
-            traverseFileSystem files, currentFile, recursive
+            traverseFileSystem files, currentFile
             
     # private watch method to do the real work
     _watch = () ->
       watchedfiles = []
       
       # get files to watch
-      traverseFileSystem watchedfiles, target, recursive
+      traverseFileSystem watchedfiles, target
 
       # loop over files to watch
       for folder in watchedfiles then do (folder) ->
