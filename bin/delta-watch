@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+var path = require('path');
+var fs   = require('fs');
+
+var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
+
+var argv = require('optimist')
+  .usage('Usage: delta-watch [opts]\nExample: delta-watch -r -t src -s "make dev"')
+  .describe('t', 'Target directory to watch')
+  .alias('t', 'target')
+  .boolean('r')
+  .default('r', true)
+  .describe('r', 'Recursive flag to watch sub-directories')
+  .describe('s', 'Shell script to run when change occurs')
+  .alias('s', 'script')
+  .demand(['t','s'])
+  .argv;
+
+require(lib + '/delta-watch').watch(argv.t, argv.r, argv.s);

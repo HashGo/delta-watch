@@ -1,0 +1,27 @@
+{
+    "name": "delta-watch"
+  , "version" : "0.0.1-alpha-1"
+  , "private" : false
+  , "description": "A simple helper utility to watch for changes to directories and files."
+  , "author": {
+      "name" : "Chris Halaschek"
+    , "email": "chris@hashgo.com"
+  }
+  , "repository" : {
+    "type" : "git"
+    , "url"  : "git://github.com/hashgo/delta-watch.git"
+  }
+  , "keywords": [ "make" ]
+  , "dependencies": {
+    "optimist"  : "latest"
+  }
+  , "devDependencies": {
+      "coffee-script": ">=1.3"
+      , "coffeelint" : ">=0.4"
+      , "mocha" : ">=1.3" 
+      , "should": ">=0.6"
+      , "wrench" : "*"
+    }
+  , "main": "index"
+}
+ 
